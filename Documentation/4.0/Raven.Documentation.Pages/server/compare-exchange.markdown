@@ -48,19 +48,6 @@ Implications:
 
 {PANEL:Example II}
 
-Instead of making reservation and storing User object, you can save entire value inside compare exchange value. 
-
-- it is fully atomic operation across entire cluster
-- since `User` object is not saved as document, it *can not* be indexed, queried, etc.
-- no need to handle partial failures
-
-{CODE email2@Server\CompareExchange.cs /}
-
-{PANEL/}
-
-
-{PANEL:Example III}
-
 In this example we use compare exchange for shared resource reservation system. This reservation is cluster-wide. 
 It has build-in protection against clients, who never release resource (i.e. due to failure), by using timeout. 
 

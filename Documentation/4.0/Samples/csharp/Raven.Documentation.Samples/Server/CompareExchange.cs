@@ -52,26 +52,6 @@ namespace Raven.Documentation.Samples.Server
             }
         }
 
-        public async Task Sample2()
-        {
-            using (var store = new DocumentStore())
-            {
-                #region email2
-                string email = "user@example.com";
-
-                User user = new User
-                {
-                    Age = 35,
-                    Email = email
-                };
-
-                CompareExchangeResult<User> saveResult 
-                    = store.Operations.Send(new PutCompareExchangeValueOperation<User>("emails/" + email, user, 0));
-                #endregion
-
-            }
-        }
-
         private class SharedResource
         {
             public DateTime? ReservedUntil { get; set; }
